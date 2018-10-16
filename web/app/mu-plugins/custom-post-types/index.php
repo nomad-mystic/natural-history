@@ -14,26 +14,39 @@ namespace App\MuPlugins\CustomPostType;
  */
 
 
+/**
+ * @author Keith Murphy || nomadmystics@gamil.com
+ * @description Autoload classes in this is plugin
+ * @param String $class_name
+ * @return void
+ */
+function custom_post_autoloader(String $class_name):void {
+    if (false !== strpos( $class_name, 'Custom')) {
+        $class_name = str_replace('\\', '/', $class_name);
+        $namespace = str_replace("\\","/",__NAMESPACE__);
+        $classes_dir = realpath(plugin_dir_path( __FILE__)) . DIRECTORY_SEPARATOR . 'src';
+        $class_file = str_replace($namespace, '', $class_name) . '.php';
+        $required_class = "$classes_dir/$class_file";
+        require_once($required_class);
+    }
+}
 spl_autoload_register('App\MuPlugins\CustomPostType\custom_post_autoloader');
 
-function custom_post_autoloader($class_name) {
-    $class_name = str_replace('\\', '/', $class_name);
-    var_dump($class_name);
-//    if (false !== strpos( $class_name, 'Museum')) {
-        $namespace = str_replace("\\","/",__NAMESPACE__);
-        var_dump($namespace);
-        $classes_dir = realpath(plugin_dir_path( __FILE__)) . DIRECTORY_SEPARATOR . 'src';
-        var_dump($classes_dir);
-        $class_file = str_replace($namespace, '', $class_name) . '.php';
-        var_dump($class_file);
-        var_dump($classes_dir . $class_file);
-        require_once($classes_dir . $class_file);
-//    }
-}
-
-add_action('plugins_loaded', 'App\MuPlugins\CustomPostType\custom_post_init');
-function custom_post_init()
+/**
+ * @author Keith Murphy || nomadmystics@gamil.com
+ * @description Autoload classes in this is plugin
+ * @return void
+ */
+function custom_post_init():void
 {
-    $customPostTypes = new CustomPostTypes();
-    $customPostTypes->init();
+    if (class_exists('App\MuPlugins\CustomPostType\CustomPostTypes')) {
+        $customPostTypes = new CustomPostTypes();
+        $customPostTypes->init();
+    }
+
+    if (class_exists('App\MuPlugins\CustomPostType\CustomPostTaxonomies')) {
+        $customPostTaxonomies = new CustomPostTaxonomies();
+        $customPostTaxonomies->init();
+    }
 }
+add_action('plugins_loaded', 'App\MuPlugins\CustomPostType\custom_post_init');
