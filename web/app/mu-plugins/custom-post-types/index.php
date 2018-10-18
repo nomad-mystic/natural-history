@@ -24,7 +24,7 @@ function custom_post_autoloader(String $class_name):void {
     if (false !== strpos( $class_name, 'Custom')) {
         $class_name = str_replace('\\', '/', $class_name);
         $namespace = str_replace("\\","/",__NAMESPACE__);
-        $classes_dir = realpath(plugin_dir_path( __FILE__)) . DIRECTORY_SEPARATOR . 'src';
+        $classes_dir = realpath(plugin_dir_path( __FILE__)) . DIRECTORY_SEPARATOR . 'src/php';
         $class_file = str_replace($namespace, '', $class_name) . '.php';
         $required_class = "$classes_dir/$class_file";
         require_once($required_class);
@@ -39,6 +39,11 @@ spl_autoload_register('App\MuPlugins\CustomPostType\custom_post_autoloader');
  */
 function custom_post_init():void
 {
+    if (class_exists('App\MuPlugins\CustomPostType\CustomPostTypesAdmin')) {
+        $customPostTypesAdmin = new CustomPostTypesAdmin();
+        $customPostTypesAdmin->init();
+    }
+
     if (class_exists('App\MuPlugins\CustomPostType\CustomPostTypes')) {
         $customPostTypes = new CustomPostTypes();
         $customPostTypes->init();
