@@ -16,7 +16,9 @@ module.exports = {
                 test: /\.js$/,
                 use: {
                     loader: "babel-loader",
-                    options: {presets: ["es2015"]}
+                    options: {
+                        presets: ["es2015"]
+                    },
                 }
             },
             {
@@ -30,9 +32,9 @@ module.exports = {
                     },
                     {
                         loader: "sass-loader" // compiles Sass to CSS
-                    }
-                ]
-            }
-        ]
-    }
+                    },
+                ],
+            },
+        ],
+    },
 };
