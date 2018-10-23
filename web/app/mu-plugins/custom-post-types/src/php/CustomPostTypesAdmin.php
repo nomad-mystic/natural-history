@@ -70,36 +70,21 @@ class CustomPostTypesAdmin
      */
     public function add_admin_scripts():void
     {
-//        plugin_dir_path()
-        wp_enqueue_script('custom-post-types-admin', '/web/app/mu-plugins/custom-post-types/build/bundle.js', [], '', true);
+        wp_enqueue_script('custom-post-types-admin', "{$this->plugin_src_url}build/bundle.js", [], '', true);
     }
 
+    /**
+     * @author Keith Murphy || nomadmystics@gmail.com
+     * @description On initialization of the custom post type admin screen display custom post types created/create new/delete
+     * @return void
+     */
     public function custom_post_types_admin_layout():void
     {
-        $views_slug = "{$this->plugin_src_url}views";
-        $template = get_template_part($views_slug . '/add-post-type-template.php');
-//        $template = get_template_part('C:\Users\kmurphy\learning\php_projects\natural_history\web\app\mu-plugins\custom-post-types\src\views\add-post-type-template.php');
-        echo $template;
-        print_r($views_slug . '/add-post-type-template.php');
-        print_r($template);
-//        load_template(plugins_url('/', dirname(__FILE__)) . 'views/add-post-type-template.php');
-//        load_template('C:\Users\kmurphy\learning\php_projects\natural_history\web\app\mu-plugins\custom-post-types\src\views\add-post-type-template.php');
-//        ?>
-<!--            <h1>Testing there is HTML</h1>-->
-<!--        --><?php
-
-//        add_filter('template_include', [&$this, 'rt_include_gym_dashboard_page_template'], 0);
-        require_once('http://natural_history.local/app/mu-plugins/custom-post-types/src/views/add-post-type-template.php');
+        // $views_slug = "{$this->plugin_src_url}views";
+        // Warning: require_once(): php_network_getaddresses: getaddrinfo failed:
+        // Temporary failure in name resolution in /home/vagrant/learning/php_projects/natural_history/web/wp/wp-includes/template.php on line 688
+        // load_template(plugins_url('/', dirname(__FILE__)) . 'views/add-post-type-template.php');
+        // @TODO this is not ideal, but with using vagrant I was getting error:
+        load_template('http://192.168.10.10/app/mu-plugins/custom-post-types/src/views/add-post-type-template.php');
     }
-
-    public function rt_include_gym_dashboard_page_template($template)
-    {
-        var_dump('testing');
-        print_r(plugin_dir_path( __FILE__ ) . 'views/add-post-type-template.php');
-
-        return plugin_dir_path( __FILE__ ) . 'views/add-post-type-template.php';
-
-//        return $template;
-    }
-
 }
