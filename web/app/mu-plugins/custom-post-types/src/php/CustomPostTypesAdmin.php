@@ -70,7 +70,7 @@ class CustomPostTypesAdmin
      */
     public function add_admin_scripts():void
     {
-        wp_enqueue_script('custom-post-types-admin', "{$this->plugin_src_url}build/bundle.js", [], '', true);
+        wp_enqueue_script('custom-post-types-admin', "http://192.168.10.10/app/mu-plugins/custom-post-types/build/bundle.js", [], '', true);
     }
 
     /**

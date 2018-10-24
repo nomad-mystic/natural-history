@@ -5,7 +5,7 @@ import camelCase from './camelCase';
  *
  * Based on {@link http://goo.gl/EUTi53|Markup-based Unobtrusive Comprehensive DOM-ready Execution} by Paul Irish
  *
- * The routing fires all common scripts, followed by the page specific scripts.
+ * The routing fires all abstracts scripts, followed by the page specific scripts.
  * Add additional events for more control over timing e.g. a finalize event
  */
 class Router {
@@ -35,13 +35,13 @@ class Router {
    * Automatically load and fire Router events
    *
    * Events are fired in the following order:
-   *  * common init
+   *  * abstracts init
    *  * page-specific init
    *  * page-specific finalize
-   *  * common finalize
+   *  * abstracts finalize
    */
   loadEvents() {
-    // Fire common init JS
+    // Fire abstracts init JS
     this.fire('common');
 
     // Fire page-specific init JS, and then finalize JS
@@ -55,7 +55,7 @@ class Router {
         this.fire(className, 'finalize');
       });
 
-    // Fire common finalize JS
+    // Fire abstracts finalize JS
     this.fire('common', 'finalize');
   }
 }

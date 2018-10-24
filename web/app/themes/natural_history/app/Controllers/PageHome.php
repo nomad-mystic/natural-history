@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use phpDocumentor\Reflection\Types\Mixed_;
 use Sober\Controller\Controller;
 
 class PageHome extends Controller
