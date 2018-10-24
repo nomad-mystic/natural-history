@@ -3,7 +3,7 @@
   Author: Keith Murphy | nomadmystics@gmail.com
 --}}
 
-{{--This might change back to layouts.app but wanted to figure out how this all works--}}
+{{--This might change back to layout.app but wanted to figure out how this all works--}}
 @extends('layouts.home')
 
 @section('content')

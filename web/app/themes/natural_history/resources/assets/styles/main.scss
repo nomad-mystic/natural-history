@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 /** Import everything from autoload */
 @import "./autoload/**/*";
 
@@ -13,5 +11,29 @@
  */
 // @import "~some-node-module";
 
+// Taken form https://sass-guidelin.es/#the-7-1-pattern
+
 /** Import theme styles */
+
 @import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/placeholders";
+
+@import "base/reset";
+@import "base/typography";
+
+@import "layout/navigation";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "layout/forms";
+
+@import 'components/buttons';
+@import 'components/wp-classes';
+
+@import 'pages/home';
+
+@import 'themes/theme';
+@import 'themes/admin';
