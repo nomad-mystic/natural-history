@@ -9,3 +9,8 @@ $breakpoints: (
   'x-large': (min-width: 1224px),
   'xx-large': (min-width: 1824px),
 );
+
+/// Point Font Awesome Path to the dist/webfonts folder
+/// @author Keith Murphy | nomadmystics@gmail.com
+/// @access public
+$fa-font-path: '../fonts/font-awesome/webfonts';

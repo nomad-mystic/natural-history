@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /** Import everything from autoload */
-@import "./autoload/**/*";
+@import "./vendors/**/*";
 
 /**
  * Import npm dependencies
@@ -10,6 +10,8 @@
  * @see https://github.com/webpack-contrib/sass-loader#imports
  */
 // @import "~some-node-module";
+
+
 
 // Taken form https://sass-guidelin.es/#the-7-1-pattern
 
@@ -33,6 +35,11 @@
 
 @import 'components/buttons';
 @import 'components/wp-classes';
+@import 'components/social';
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+//@import "~@fortawesome/fontawesome-free/scss/core";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 
 @import 'pages/home';
 
