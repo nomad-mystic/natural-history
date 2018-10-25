@@ -1,0 +1,14 @@
+/// Font Styles
+$default-font-size: 16px;
+
+/// Header fonts
+/// @author Keith Murphy | nomadmystics@gmail.com
+/// @access public
+@font-face {
+  font-family: header-font-normal;
+  font-weight: 400;
+  font-style: normal;
+  src: url('../../fonts/bmicons.woff') format('woff'),
+    url('../../fonts/bmicons.eot') format('eot'),
+    url('../../fonts/bmicons.ttf') format('ttf');
+}

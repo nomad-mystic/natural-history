@@ -1,9 +1,1 @@
 
-
-body {
-  background: #000;
-
-  @include respond-to('medium') {
-    background: green;
-  }
-}
