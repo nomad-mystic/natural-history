@@ -22,3 +22,13 @@
       + 'Please make sure it is defined in `$breakpoints` map.';
   }
 }
+
+/// Responsive image builder
+/// @author Keith Murphy | nomadmystics@gmail.com
+/// @access public
+@mixin responsive-image() {
+  height: auto;
+  min-width: 100%;
+  width: 100%;
+  display: block;
+}
