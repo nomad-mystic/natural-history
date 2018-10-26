@@ -1,6 +1,8 @@
 /// Font Styles
 $default-font-size: 16px;
 
+
+
 /// Header fonts
 /// @author Keith Murphy | nomadmystics@gmail.com
 /// @access public
@@ -13,3 +15,5 @@ $default-font-size: 16px;
     url('../../fonts/bmicons.eot') format('eot'),
     url('../../fonts/bmicons.ttf') format('ttf');
 }
+
+$heading-font-stack: 'header-font-normal', 'Arial', 'Helvetica', sans-seif;

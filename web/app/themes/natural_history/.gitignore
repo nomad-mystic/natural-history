@@ -9,3 +9,4 @@ vendor
 resources/assets/config-local.json
 
 *.psd
+resources/assets/images/raw/*

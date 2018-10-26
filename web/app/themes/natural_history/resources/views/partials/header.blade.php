@@ -1,4 +1,4 @@
-<header class="">
+<header>
   <div class="primary-menu">
     <a class="" href="{{ home_url('/') }}">{{ get_bloginfo('name', 'display') }}</a>
     <nav class="">

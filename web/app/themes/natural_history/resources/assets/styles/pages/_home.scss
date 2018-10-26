@@ -1,16 +1,38 @@
 /// This is the styles for the home page
 
-
 .home-jumbo {
-  img {
-    @include responsive-image();
+  font-family: $heading-font-stack;
+  width: 100%;
+  height: auto;
+
+  .home-jumbo-image {
+    display: block;
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+
+    .home-jumbo-excerpt {
+      position: absolute;
+      top: 46%;
+      font-size: 3em;
+      color: white;
+      line-height: 1.25;
+      left: 5%;
+    }
+  }
+
+  .home-jumbo-control {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: $black;
   }
 }
 
-
-.showcase {
+.home-showcase {
   .content-showcase {
-
+    display: block;
   }
 }
-
