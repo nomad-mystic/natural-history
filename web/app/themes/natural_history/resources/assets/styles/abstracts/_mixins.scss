@@ -32,3 +32,21 @@
   width: 100%;
   display: block;
 }
+
+/// Center Content in Element
+/// @author Keith Murphy | nomadmystics@gmail.com
+/// @access public
+@mixin flex-align-all-center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+@mixin cover-div() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

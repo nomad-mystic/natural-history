@@ -8,10 +8,11 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/app/themes/sage",
-  "devUrl": "http://natural_history.local",
+  "publicPath": "/app/themes/natural_history",
+  "devUrl": "http://192.168.10.10",
   "proxyUrl": "http://192.168.10.10:3000",
   "cacheBusting": "[name]_[hash:8]",
+  "headers": { "Access-Control-Allow-Origin": "*" },
   "watch": [
     "app/**/*.php",
     "config/**/*.php",

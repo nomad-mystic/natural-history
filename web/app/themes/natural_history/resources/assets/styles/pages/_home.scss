@@ -4,6 +4,7 @@
   font-family: $heading-font-stack;
   width: 100%;
   height: auto;
+  margin: 0 auto 20%;
 
   .home-jumbo-image {
     display: block;
@@ -13,6 +14,12 @@
     background-position: center center;
     position: relative;
 
+    .cover {
+      @include cover-div();
+
+      background: rgba(0, 0, 0, 0.3);
+    }
+
     .home-jumbo-excerpt {
       position: absolute;
       top: 46%;
@@ -20,18 +27,42 @@
       color: white;
       line-height: 1.25;
       left: 5%;
+      letter-spacing: -1px;
+      word-spacing: -40%;
     }
   }
 
   .home-jumbo-control {
     display: block;
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
     background: $black;
+    position: absolute;
+    bottom: -35px;
+    left: 10px;
+
+    span {
+      @include flex-align-all-center();
+
+      width: 100%;
+      height: 100%;
+      color: $white;
+
+      &::before {
+        font-size: 1.25em;
+      }
+    }
   }
 }
 
 .home-showcase {
+  h2 {
+    font-family: $heading-font-stack;
+    font-size: 2.25em;
+    letter-spacing: -1px;
+    word-spacing: -40%;
+  }
+
   .content-showcase {
     display: block;
   }
