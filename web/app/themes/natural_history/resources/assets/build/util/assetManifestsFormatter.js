@@ -12,12 +12,12 @@ module.exports = (key, value) => {
    *
    * Before:
    *   {
-   *     "main.js": "scripts/main_abcdef.js"
+   *     "media-links.js": "scripts/main_abcdef.js"
    *     "main.css": "styles/main_abcdef.css"
    *   }
    * After:
    *   {
-   *     "scripts/main.js": "scripts/main_abcdef.js"
+   *     "scripts/media-links.js": "scripts/main_abcdef.js"
    *     "styles/main.css": "styles/main_abcdef.css"
    *   }
    */

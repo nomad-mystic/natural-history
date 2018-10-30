@@ -1,4 +1,4 @@
-/* === dont forget to import scss to main.js file === */
+/* === dont forget to import scss to media-links.js file === */
 /* ===> import './main.scss'; <=== */
 
 const path = require("path");
