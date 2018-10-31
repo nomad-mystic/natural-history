@@ -23,7 +23,9 @@ class PostMediaLinksMeta
         add_action('admin_post_process_form', [&$this, 'post_data']);
     }
 
-    function post_data() {
+    function post_data()
+    {
+
         $links = [];
         $meta_type = 'media-links-meta-type';
         $object_id = 1;
@@ -41,15 +43,8 @@ class PostMediaLinksMeta
             }
         }
 
-        // redirect to the same page on form submission
-//        $referer = $_SERVER['HTTP_REFERER'];
-//        header("Location: $referer");
-    }
-}
-
-if (class_exists('App\MuPlugins\MediaLinks\PostMediaLinksMeta')) {
-    $mediaLinksPostMeta = new PostMediaLinksMeta();
-    if (!empty($_POST)) {
-        $mediaLinksPostMeta->init();
+//         redirect to the same page on form submission
+        $referer = $_SERVER['HTTP_REFERER'];
+        header("Location: $referer");
     }
 }

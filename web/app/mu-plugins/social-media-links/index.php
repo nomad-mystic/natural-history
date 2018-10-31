@@ -43,5 +43,13 @@ function media_links_init():void
         $MediaLinks = new MediaLinks();
         $MediaLinks->init();
     }
+
+    if (class_exists('App\MuPlugins\MediaLinks\PostMediaLinksMeta')) {
+
+        $mediaLinksPostMeta = new PostMediaLinksMeta();
+//        if (!empty($_POST)) {
+            $mediaLinksPostMeta->init();
+//        }
+    }
 }
 add_action('plugins_loaded', 'App\MuPlugins\MediaLinks\media_links_init');
