@@ -18,10 +18,9 @@ class MediaLinks
 
     private $domainURL;
 
-    private $facebook;
-    private $twitter;
-    private $instagram;
-    private $soundcloud;
+    private $object_id;
+    private $meta_key;
+    private $keys;
 
     /**
      * @author Keith Murphy || nomadmystics@gmail.com
@@ -31,6 +30,14 @@ class MediaLinks
     {
         $this->textdomain = 'museum';
         $this->domainURL = getenv('WP_HOME');
+        $this->object_id = 1000000;
+        $this->meta_key = 'media-links-meta-key';
+        $this->keys = [
+            'facebook',
+            'twitter',
+            'instagram',
+            'soundcloud',
+        ];
     }
 
     /**
@@ -41,7 +48,6 @@ class MediaLinks
     public function init()
     {
         add_action('admin_menu', [&$this, 'add_admin_menu']);
-//        add_action('wp_ajax_store_admin_data', [&$this, 'store_admin_data']);
         add_action('admin_enqueue_scripts', [&$this, 'add_admin_styles']);
         add_action('admin_enqueue_scripts', [&$this, 'add_admin_scripts']);
     }
@@ -78,6 +84,7 @@ class MediaLinks
     /**
      * @author Keith Murphy || nomadmystics@gmail.com
      * @description Add our plugin scripts
+     * @todo Remove this as JS is not needed for this plugin - keep until totally finished
      * @return void
      */
     public function add_admin_scripts():void
@@ -93,7 +100,12 @@ class MediaLinks
         wp_localize_script('media-links-admin-script', 'media_links_exchanger', $admin_options);
     }
 
-    function post_data()
+    /**
+     * @author Keith Murphy || nomadmystics@gmail.com
+     * @description Update metadata for social media links
+     * @return void
+     */
+    function post_data():void
     {
         if (!isset($_POST['media_links_form']) || ! wp_verify_nonce($_POST['media_links_form'], 'media_links_form_update')) {
             ?>
@@ -104,41 +116,41 @@ class MediaLinks
             exit;
         }
 
-        die('testing');
+        $meta_type = 'post';
         $links = [];
-        $meta_type = 'media-links-meta-type';
-        $object_id = 1;
-        $meta_key = 'media-links-meta-key';
-
-        $links[0] = $this->facebook;
-        $links[1] = $this->twitter;
-        $links[2] = $this->instagram;
-        $links[3] = $this->soundcloud;
+        $links[0] = filter_var(strip_tags($_POST['facebook'], FILTER_SANITIZE_URL));
+        $links[1] = filter_var(strip_tags($_POST['twitter']));
+        $links[2] = filter_var(strip_tags($_POST['instagram']));
+        $links[3] = filter_var(strip_tags($_POST['soundcloud']));
 
         for ($i = 0; $i < count($links); $i++) {
             if (isset($links[$i]) && !empty($links[$i])) {
-                var_dump($links[$i]);
-                update_metadata($meta_type, $object_id, $meta_key, $links[$i]);
+                update_metadata($meta_type, $this->object_id, "{$this->meta_key}-{$this->keys[$i]}", $links[$i]);
             }
         }
-
-//         redirect to the same page on form submission
-        $referer = $_SERVER['HTTP_REFERER'];
-        header("Location: $referer");
     }
 
     /**
      * @author Keith Murphy || nomadmystics@gmail.com
-     * @description On initialization of the custom post type admin screen display custom post types created/create new/delete
+     * @description Create the form that will update the metadata that can be used around the site.
      * @return void
      */
     public function media_links_admin_layout():void
     {
-        // @TODO this is not ideal, but with using vagrant I was getting error:
-//        load_template("{$this->domainURL}/app/mu-plugins/social-media-links/src/views/media-links-template.php");
-        if ( $_POST['updated'] === 'true' ) {
+        $metadata = [];
+
+        if (isset($_POST['updated']) &&  $_POST['updated'] === 'true' ) {
             $this->post_data();
+
+            for ($i = 0; $i < count($this->keys); $i++) {
+                $metadata[$i] = get_metadata('post', $this->object_id, "{$this->meta_key}-{$this->keys[$i]}");
+            }
         }
+
+        $facebook_value = !empty($metadata[0][0]) ? (string) $metadata[0][0] : '';
+        $twitter_value = !empty($metadata[1][0]) ? (string) $metadata[1][0] : '';
+        $instagram_value = !empty($metadata[2][0]) ? (string) $metadata[2][0] : '';
+        $soundcloud_value = !empty($metadata[3][0]) ? (string) $metadata[3][0] : '';
         ?>
         <section>
             <main role="main">
@@ -146,25 +158,25 @@ class MediaLinks
                     <h1>Add Your Social Media Links Here</h1>
                     <form method="post" id="media-links-form">
                         <input type="hidden" name="updated" value="true" />
-                        <?php wp_nonce_field( 'media_links_form_update', 'media_links_form' ); ?>
+                        <?php wp_nonce_field('media_links_form_update', 'media_links_form'); ?>
                         <div class="facebook">
                             <label for="facebook_input">Facebook</label>
-                            <input type="text" id="facebook_input" name="facebook">
+                            <input type="text" id="facebook_input" name="facebook" value="<?php echo $facebook_value?>">
                         </div>
                         <br>
                         <div class="twitter">
                             <label for="twitter_input">Twitter</label>
-                            <input type="text" id="twitter_input" name="twitter">
+                            <input type="text" id="twitter_input" name="twitter" value="<?php echo $twitter_value?>">
                         </div>
                         <br>
                         <div class="instagram">
                             <label for="instagram_input">Instagram</label>
-                            <input type="text" id="instagram_input" name="instagram">
+                            <input type="text" id="instagram_input" name="instagram" value="<?php echo $instagram_value?>">
                         </div>
                         <br>
                         <div class="soundcloud">
                             <label for="soundcloud_input">Soundcloud</label>
-                            <input type="text" id="soundcloud_input" name="soundcloud">
+                            <input type="text" id="soundcloud_input" name="soundcloud" value="<?php echo $soundcloud_value?>">
                         </div>
                         <div class="submit">
                             <input type="submit" value="Submit" id="js-media-links-submit" name="Submit">
