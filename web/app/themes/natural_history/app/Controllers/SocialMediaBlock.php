@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Traits;
+namespace App\Controllers;
 
-trait SocialMediaBlock
+use Sober\Controller\Controller;
+
+class SocialMediaBlock extends Controller
 {
     /**
      * @author Keith Murphy || nomadmystics@gmail.com
@@ -12,7 +14,7 @@ trait SocialMediaBlock
     public static function all_social_metadata():array
     {
         $metadata = [];
-        $object_id = 100000;
+        $object_id = 1000000;
         $meta_key = 'media-links-meta-key';
         $keys = [
             'facebook',
@@ -22,7 +24,8 @@ trait SocialMediaBlock
         ];
 
         for ($i = 0; $i < count($keys); $i++) {
-            $metadata[$i] = get_metadata('post', $object_id, "{$meta_key}-{$keys[$i]}");
+            $metadata[$i][0] = $keys[$i];
+            $metadata[$i][1] = get_metadata('post', $object_id, "{$meta_key}-{$keys[$i]}", true);
         }
 
         return $metadata;
