@@ -80,3 +80,12 @@ add_filter('comments_template', function ($comments_template) {
 
     return $comments_template;
 }, 100);
+
+
+// testing adding filter data to the home template
+add_filter('sage/template/home/data', function (array $data) {
+    $data['banner_title'] = 'test';
+    // $data['banner_title'] = get_field('banner_title', 6);
+    var_dump($data['banner_title']);
+    return $data;
+});

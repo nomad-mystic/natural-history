@@ -2,10 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Traits\SocialMediaBlock;
 use Sober\Controller\Controller;
 
 class App extends Controller
 {
+    use SocialMediaBlock;
+
     public function siteName()
     {
         return get_bloginfo('name');
@@ -30,4 +33,16 @@ class App extends Controller
         }
         return get_the_title();
     }
+
+    /**
+     * @author Keith Murphy || nomadmystics@gmail.com
+     * @description Pass the social media base links to the whole App
+     * @return array
+     */
+//    public function all_social_metadata():array
+//    {
+//        $social_metadata = App::all_social_metadata();
+//
+//        return $social_metadata;
+//    }
 }

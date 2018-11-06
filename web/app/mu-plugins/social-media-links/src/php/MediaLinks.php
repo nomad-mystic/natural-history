@@ -137,14 +137,13 @@ class MediaLinks
      */
     public function media_links_admin_layout():void
     {
-        $metadata = [];
-
         if (isset($_POST['updated']) &&  $_POST['updated'] === 'true' ) {
             $this->post_data();
+        }
 
-            for ($i = 0; $i < count($this->keys); $i++) {
-                $metadata[$i] = get_metadata('post', $this->object_id, "{$this->meta_key}-{$this->keys[$i]}");
-            }
+        $metadata = [];
+        for ($i = 0; $i < count($this->keys); $i++) {
+            $metadata[$i] = get_metadata('post', $this->object_id, "{$this->meta_key}-{$this->keys[$i]}");
         }
 
         $facebook_value = !empty($metadata[0][0]) ? (string) $metadata[0][0] : '';
