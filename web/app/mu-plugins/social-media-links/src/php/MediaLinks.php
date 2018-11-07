@@ -49,7 +49,7 @@ class MediaLinks
     {
         add_action('admin_menu', [&$this, 'add_admin_menu']);
         add_action('admin_enqueue_scripts', [&$this, 'add_admin_styles']);
-        add_action('admin_enqueue_scripts', [&$this, 'add_admin_scripts']);
+//        add_action('admin_enqueue_scripts', [&$this, 'add_admin_scripts']);
     }
 
     /**

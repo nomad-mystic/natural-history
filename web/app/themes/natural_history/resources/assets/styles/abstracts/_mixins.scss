@@ -33,7 +33,7 @@
   display: block;
 }
 
-/// Center Content in Element
+/// Flex center all elements
 /// @author Keith Murphy | nomadmystics@gmail.com
 /// @access public
 @mixin flex-align-all-center() {
@@ -43,6 +43,9 @@
   margin: 0 auto;
 }
 
+/// Center Content in Element
+/// @author Keith Murphy | nomadmystics@gmail.com
+/// @access public
 @mixin cover-div() {
   position: absolute;
   top: 0;

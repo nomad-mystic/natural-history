@@ -1,0 +1,40 @@
+.social-media-links-container {
+  @include flex-align-all-center();
+
+  width: 90%;
+  margin: 0 auto;
+
+  .share-icon {
+    background-color: #000;
+    color: #fff;
+    border: solid 0.25px #000;
+    transition: none;
+  }
+
+  a {
+    display: block;
+  }
+
+  span {
+    padding: 0.75em;
+    margin: 0;
+    font-size: 24px;
+    display: inline-block;
+    background-color: #fff;
+    color: #000;
+    border: solid 0.25px #aaa;
+    transition: all 0.25s linear;
+
+    &:hover {
+      border-color: #000;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+  span:nth-child(2),
+  span:nth-child(3),
+  span:nth-child(4) {
+    border-left: none;
+  }
+}

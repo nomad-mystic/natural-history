@@ -53,4 +53,3 @@ var_dump($post);
         </div>
     </main>
 </section>
-
