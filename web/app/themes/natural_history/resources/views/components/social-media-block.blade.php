@@ -15,4 +15,3 @@
         @endfor
     </div>
 </section>
-{{--@debug('controller')--}}
