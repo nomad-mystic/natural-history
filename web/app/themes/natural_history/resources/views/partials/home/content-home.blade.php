@@ -20,6 +20,9 @@
             @include('components.social-media-block')
             <section>
                 <article>
+                    @php
+                        var_dump($get_truncate_home_jumbo_post);
+                    @endphp
                     <div class="content-showcase">
                         @for ($p = 0; $p < 3; $p++)
                             {!! $get_truncate_home_jumbo_post[$p] !!}
