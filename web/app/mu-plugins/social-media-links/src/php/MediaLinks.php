@@ -81,24 +81,24 @@ class MediaLinks
     }
 
 
-    /**
-     * @author Keith Murphy || nomadmystics@gmail.com
-     * @description Add our plugin scripts
-     * @todo Remove this as JS is not needed for this plugin - keep until totally finished
-     * @return void
-     */
-    public function add_admin_scripts():void
-    {
-        $_nonce = 'media_admin';
-
-        wp_enqueue_script('media-links-admin-script', "{$this->domainURL}/app/mu-plugins/social-media-links/src/js/media-links.js", [], '', true);
-
-        $admin_options = array(
-            'ajax_url' => admin_url( 'admin-ajax.php' ),
-            '_nonce'   => wp_create_nonce( $_nonce ),
-        );
-        wp_localize_script('media-links-admin-script', 'media_links_exchanger', $admin_options);
-    }
+//    /**
+//     * @author Keith Murphy || nomadmystics@gmail.com
+//     * @description Add our plugin scripts
+//     * @todo Remove this as JS is not needed for this plugin - keep until totally finished
+//     * @return void
+//     */
+//    public function add_admin_scripts():void
+//    {
+//        $_nonce = 'media_admin';
+//
+//        wp_enqueue_script('media-links-admin-script', "{$this->domainURL}/app/mu-plugins/social-media-links/src/js/media-links.js", [], '', true);
+//
+//        $admin_options = array(
+//            'ajax_url' => admin_url( 'admin-ajax.php' ),
+//            '_nonce'   => wp_create_nonce( $_nonce ),
+//        );
+//        wp_localize_script('media-links-admin-script', 'media_links_exchanger', $admin_options);
+//    }
 
     /**
      * @author Keith Murphy || nomadmystics@gmail.com
