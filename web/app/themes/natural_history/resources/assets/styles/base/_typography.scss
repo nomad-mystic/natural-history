@@ -2,6 +2,8 @@
 $default-font-size: 16px;
 
 $header-font-normal: 'header-font-normal';
+$paragarph-font-light: 'paragarph-font-light';
+$paragarph-font-regular: 'paragarph-font-regular';
 
 /// Header fonts
 /// @author Keith Murphy | nomadmystics@gmail.com
@@ -16,4 +18,19 @@ $header-font-normal: 'header-font-normal';
     url('../../fonts/bmicons.ttf') format('ttf');
 }
 
+@font-face {
+  font-family: $paragarph-font-light;
+  src: url('../../fonts/paragraph-light.woff') format('woff');
+}
+
+@font-face {
+  font-family: $paragarph-font-regular;
+  src: url('../../fonts/paragraph-regular.woff') format('woff');
+}
+
+/// Font Stacks
+/// @author Keith Murphy | nomadmystics@gmail.com
+/// @access public
 $heading-font-stack: $header-font-normal, 'Arial', 'Helvetica', sans-seif;
+$paragarph-font-light-stack: $paragarph-font-light, 'Arial', 'Helvetica', sans-seif;
+$paragarph-font-regular-stack: $paragarph-font-regular, 'Arial', 'Helvetica', sans-seif;

@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection SpellCheckingInspection */
 
 namespace App\Utils;
 
@@ -6,13 +6,17 @@ namespace App\Utils;
 class Shortcodes
 {
 
-    public function init()
+    public function init():void
     {
         remove_shortcode('gallery');
         add_shortcode('gallery', [&$this, 'post_gallery']);
     }
 
-    public function post_gallery($atts)
+    /**
+     * @param array $atts
+     * @return string $gallery
+     */
+    public function post_gallery(array $atts):string
     {
         global $post;
         $pid = $post->ID;

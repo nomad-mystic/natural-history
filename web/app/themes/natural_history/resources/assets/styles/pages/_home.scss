@@ -65,5 +65,15 @@
 
   .content-showcase {
     display: block;
+    padding: 1em;
+
+    p {
+      font-family: $paragarph-font-light-stack;
+    }
+
+    > p:nth-child(1) {
+      font-family: $paragarph-font-regular-stack;
+      font-weight: bold;
+    }
   }
 }
