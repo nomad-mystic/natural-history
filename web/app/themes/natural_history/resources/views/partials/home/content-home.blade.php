@@ -20,21 +20,19 @@
             @include('components.social-media-block')
             <section>
                 <article>
-                    @php
-                        var_dump($get_truncate_home_jumbo_post);
-                    @endphp
+                    {{--@php--}}
+                        {{--var_dump($get_truncate_home_jumbo_post);--}}
+                    {{--@endphp--}}
                     <div class="content-showcase">
                         @for ($p = 0; $p < 3; $p++)
                             {!! $get_truncate_home_jumbo_post[$p] !!}
                         @endfor
-                        <button id="j-show-more-button">
-                            Show More
-                        </button>
-                        <div class="show-more j-show-more">
+                        <div class="show-more-content is-invisible" id="j-show-more-content">
                         @for ($p = 3; $p < count($get_truncate_home_jumbo_post); $p++)
                             {!! $get_truncate_home_jumbo_post[$p] !!}
                         @endfor
                         </div>
+                        <button id="j-show-more-button">SHOW MORE</button>
                     </div>
                 </article>
             </section>

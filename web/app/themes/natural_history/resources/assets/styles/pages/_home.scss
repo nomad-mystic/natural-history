@@ -22,7 +22,7 @@
 
     .home-jumbo-excerpt {
       position: absolute;
-      top: 46%;
+      top: 70%;
       font-size: 3em;
       color: white;
       line-height: 1.25;
@@ -69,11 +69,56 @@
 
     p {
       font-family: $paragarph-font-light-stack;
+      margin: 5% 0;
     }
 
     > p:nth-child(1) {
       font-family: $paragarph-font-regular-stack;
       font-weight: bold;
+    }
+
+    button {
+      font-family: $paragarph-font-regular-stack;
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      border: none;
+      margin: 0;
+      text-decoration: none;
+      text-align: left;
+      background: none;
+      color: #000;
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 250ms ease-in-out, transform 150ms ease;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 37%;
+        right: 0;
+        height: 0.5em;
+        border-top: 1px solid black;
+        z-index: -1;
+        width: 5%;
+      }
+    }
+
+    .show-more-content {
+      display: block;
+      opacity: 1;
+      transition: all 1s ease-in;
+    }
+
+    // utils
+    .is-invisible {
+      opacity: 0;
+      display: none;
+      overflow: hidden;
     }
   }
 }
