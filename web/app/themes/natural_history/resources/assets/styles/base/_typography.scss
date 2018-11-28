@@ -4,6 +4,7 @@ $default-font-size: 16px;
 $header-font-normal: 'header-font-normal';
 $paragarph-font-light: 'paragarph-font-light';
 $paragarph-font-regular: 'paragarph-font-regular';
+$font-awesome-regular: 'Font Awesome 5 Free';
 
 /// Header fonts
 /// @author Keith Murphy | nomadmystics@gmail.com
@@ -28,9 +29,17 @@ $paragarph-font-regular: 'paragarph-font-regular';
   src: url('../../fonts/paragraph-regular.woff') format('woff');
 }
 
+@font-face {
+  font-family: $font-awesome-regular;
+  font-weight: 400;
+  font-style: normal;
+  src: url('../../fonts/paragraph-regular.woff') format('woff');
+}
+
 /// Font Stacks
 /// @author Keith Murphy | nomadmystics@gmail.com
 /// @access public
 $heading-font-stack: $header-font-normal, 'Arial', 'Helvetica', sans-seif;
 $paragarph-font-light-stack: $paragarph-font-light, 'Arial', 'Helvetica', sans-seif;
 $paragarph-font-regular-stack: $paragarph-font-regular, 'Arial', 'Helvetica', sans-seif;
+$font-awesome-regular-stack: $font-awesome-regular, 'Arial', 'Helvetica', sans-seif;
