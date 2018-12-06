@@ -39,8 +39,8 @@ spl_autoload_register('App\MuPlugins\CustomPostType\custom_post_autoloader');
  */
 function custom_post_init():void
 {
-    if (class_exists('App\MuPlugins\CustomPostType\CustomPostTypesAdmin')) {
-        $customPostTypesAdmin = new CustomPostTypesAdmin();
+    if (class_exists('App\MuPlugins\CustomPostType\CustomPostTypesAdminTesting')) {
+        $customPostTypesAdmin = new CustomPostTypesAdminTesting();
         $customPostTypesAdmin->init();
     }
 
